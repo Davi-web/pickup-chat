@@ -16,7 +16,7 @@ const Auth = () => {
     }
     setUsername(router.query.username);
     setSecret(router.query.secret);
-  }, [router.query.username, router.query.secret]);
+  }, []);
   useEffect(() => {
     if (username.length === 1 || secret.length === 1) return;
     axios
