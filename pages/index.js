@@ -12,7 +12,7 @@ const Auth = () => {
       router.query.username === undefined ||
       router.query.secret === undefined
     ) {
-      window.location.href = "https://pickup-davi-web.vercel.app/";
+      window.location.assign("https://pickup-davi-web.vercel.app/");
     }
     setUsername(router.query.username);
     setSecret(router.query.secret);
