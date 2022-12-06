@@ -14,7 +14,19 @@ const Auth = () => {
     if (router.query.secret) {
       setSecret(router.query.secret);
     }
-  }, [router.query]);
+  }, [router.query.username, router.query.secret]);
+  useEffect(() => {
+    if (username.length === 1 || secret.length === 1) return;
+    axios
+      .put(
+        "https://api.chatengine.io/users/",
+        { username, secret },
+        { headers: { "Private-Key": "926cdaf3-68a6-4d34-98ea-38d1c2121004" } }
+      )
+      .then((r) => {
+        router.push("/chats");
+      });
+  }, [username, secret]);
 
   function onSubmit(e) {
     e.preventDefault();
