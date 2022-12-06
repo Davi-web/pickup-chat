@@ -32,6 +32,13 @@ export default function Home() {
   return (
     <div className="background">
       <div className="shadow">
+        <button
+          onClick={() =>
+            (window.location.href = "https://pickup-davi-web.vercel.app/")
+          }
+        >
+          Go Back
+        </button>
         <ChatEngine
           height="calc(100vh - 212px)"
           projectID="98554d93-5bcc-4c28-8594-ba95b6672043"
