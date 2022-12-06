@@ -40,8 +40,13 @@ export default function Home() {
           }
         >
           <p className="GoBackP">
-            {" "}
-            <Image src="/backArrow.svg" width={20} height={20} />
+            <Image
+              src="/backArrow.svg"
+              width={20}
+              height={20}
+              className="backarrowImage"
+            />
+            {"  "}
             Go Back
           </p>
         </button>
