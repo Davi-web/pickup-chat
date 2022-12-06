@@ -9,9 +9,11 @@ const Auth = () => {
   const router = useRouter();
   useEffect(() => {
     if (router.query.username) {
+      console.log(router.query.username);
       setUsername(router.query.username.replace(/[a-zA-Z0-9]/g, ""));
     }
     if (router.query.secret) {
+      console.log(router.query.secret);
       setSecret(router.query.secret.replace(/[a-zA-Z0-9]/g, ""));
     }
   }, [router.query.username, router.query.secret]);
