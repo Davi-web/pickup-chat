@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -9,17 +9,14 @@ const Auth = () => {
   const router = useRouter();
   useEffect(() => {
     if (router.query.username) {
-      console.log(router.query.username);
-      setUsername(router.query.username.replace(/[a-zA-Z0-9]/g, ""));
+      setUsername(router.query.username);
     }
     if (router.query.secret) {
-      console.log(router.query.secret);
-      setSecret(router.query.secret.replace(/[a-zA-Z0-9]/g, ""));
+      setSecret(router.query.secret);
     }
   }, [router.query.username, router.query.secret]);
-
   useEffect(() => {
-    if (username.length <= 1 || secret.length <= 1) return;
+    if (username.length === 1 || secret.length === 1) return;
     axios
       .put(
         "https://api.chatengine.io/users/",
