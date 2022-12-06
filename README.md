@@ -1,31 +1,36 @@
-# NextJS Chat Tutorial
+# pickup.io
 
-<img 
-    src="https://raw.githubusercontent.com/alamorre/nextjs-chat-app/main/assets/nextjs-chat-tutorial.png" 
-    width="75%" 
-    height="100%"
-/>
 
-This project is powered by [Chat Engine](https://chatengine.io).
+## What is Pickup-Chat?
+This is a web-socket server that is used to support the PickUp application with chatting services. 
 
-## Tutorial Setup
 
-Download Code > Zip from [the main branch](https://github.com/alamorre/nextjs-chat-tutorial/).
+## How do I install/deploy this?
 
-Follow the Video Tutorial [right here](https://chatengine.io).
+### Installation
 
-Push to your own repo and link to [vercel](https://vercel.io).
+1.  Open your preferred terminal
+2.  cd into a preferred directory
+3.  Use the command 'git clone https://github.com/Davi-web/pickup-chat.git'
+4.  Open the folder with your IDE of choice
 
-## Setup Finished Project
+### Vercel
 
-For the finished version of this project, go to [the last branch](https://github.com/alamorre/nextjs-chat-tutorial/tree/3-chats).
+We recommend deploying to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss). It makes it super easy to deploy NextJs apps.
 
-Go to [Chat Engine](https://chatengine.io) and create a account and project.
+- Push your code to a GitHub repository.
+- Go to [Vercel](https://vercel.com/?utm_source=t3-oss&utm_campaign=oss) and sign up with GitHub.
+- Create a Project and import the repository you pushed your code to.
+- Add your environment variables.
+- Click **Deploy**
+- Now whenever you push a change to your repository, Vercel will automatically redeploy your website!
 
-Find the Private Key `c2f82e63-9978-4c5c-9c17-8b0dec845dc6` and Project ID `b60a6d8b-d377-477e-af88-e47de35b3e89` then replace the values with your API keys.
+### Docker
 
-The project has been deleted so those keys won't work anymore.
+You can also dockerize this stack and deploy a container. See the [Docker deployment page](https://create-t3-app-nu.vercel.app/en/deployment/docker) for details.
 
-### `yarn dev`
+## Useful resources
 
-Install everything with `yarn` then run `yarn dev` to get up and running.
+Here are some resources that we commonly refer to:
+
+- [Protecting routes with Next-Auth.js](https://next-auth.js.org/configuration/nextjs#unstable_getserversession)
