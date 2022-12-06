@@ -8,25 +8,25 @@ const Auth = () => {
   const [loading, setLoading] = useState(true);
 
   const router = useRouter();
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (router.query.username && router.query.secret) {
-        setUsername(router.query.username);
-        setSecret(router.query.secret);
-      } else {
-        window.location.assign("https://pickup-davi-web.vercel.app/");
-      }
-    }, 1000);
-    return () => clearTimeout(timer);
-  }, [router.query.username, router.query.secret]);
   // useEffect(() => {
-  //   if (router.query.username) {
-  //     setUsername(router.query.username);
-  //   }
-  //   if (router.query.secret) {
-  //     setSecret(router.query.secret);
-  //   }
+  //   const timer = setTimeout(() => {
+  //     if (router.query.username && router.query.secret) {
+  //       setUsername(router.query.username);
+  //       setSecret(router.query.secret);
+  //     } else {
+  //       window.location.assign("https://pickup-davi-web.vercel.app/");
+  //     }
+  //   }, 1000);
+  //   return () => clearTimeout(timer);
   // }, [router.query.username, router.query.secret]);
+  useEffect(() => {
+    if (router.query.username) {
+      setUsername(router.query.username);
+    }
+    if (router.query.secret) {
+      setSecret(router.query.secret);
+    }
+  }, [router.query.username, router.query.secret]);
   useEffect(() => {
     if (username.length === 1 || secret.length === 1) return;
     axios
