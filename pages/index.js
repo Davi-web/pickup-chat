@@ -16,7 +16,7 @@ const Auth = () => {
       } else {
         window.location.assign("https://pickup-davi-web.vercel.app/");
       }
-    }, 1500);
+    }, 1000);
     return () => clearTimeout(timer);
   }, [router.query.username, router.query.secret]);
   // useEffect(() => {
