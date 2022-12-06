@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../context";
 import { useRouter } from "next/router";
 import axios from "axios";
@@ -7,6 +7,14 @@ const Auth = () => {
   const { username, setUsername, secret, setSecret } = useContext(Context);
 
   const router = useRouter();
+  useEffect(() => {
+    if (router.query.username) {
+      setUsername(router.query.username);
+    }
+    if (router.query.secret) {
+      setSecret(router.query.secret);
+    }
+  }, [router.query]);
 
   function onSubmit(e) {
     e.preventDefault();
