@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../context";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const ChatEngine = dynamic(() =>
   import("react-chat-engine").then((module) => module.ChatEngine)
@@ -33,11 +34,16 @@ export default function Home() {
     <div className="background">
       <div className="shadow">
         <button
+          className="back-button"
           onClick={() =>
             (window.location.href = "https://pickup-davi-web.vercel.app/")
           }
         >
-          Go Back
+          <p className="GoBackP">
+            {" "}
+            <Image src="/backArrow.svg" width={20} height={20} />
+            Go Back
+          </p>
         </button>
         <ChatEngine
           height="calc(100vh - 212px)"

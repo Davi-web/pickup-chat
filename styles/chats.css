@@ -160,5 +160,24 @@
 
 .ce-autocomplete-close {
   background-color: white !important;
-  border-radius: 0px !important;
+  border-radius: 20px !important;
+}
+
+.back-button {
+  background-color: #4a5162 !important;
+  border-radius: 10px !important;
+  position: absolute;
+  top: 10px;
+}
+.back-button:hover {
+  background-color: #9a97fc !important;
+}
+
+.GoBackP {
+  color: white !important;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 10px 0px;
+  
 }
