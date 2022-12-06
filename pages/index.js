@@ -1,80 +1,43 @@
-import React, { useContext, useEffect } from "react";
-import { Context } from "../context";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import axios from "axios";
+import dynamic from "next/dynamic";
 
-const Auth = () => {
-  const { username, setUsername, secret, setSecret } = useContext(Context);
-
+const ChatEngine = dynamic(() =>
+  import("react-chat-engine").then((module) => module.ChatEngine)
+);
+const MessageFormSocial = dynamic(() =>
+  import("react-chat-engine").then((module) => module.MessageFormSocial)
+);
+const Home = () => {
+  const [showChat, setShowChat] = useState(false);
   const router = useRouter();
+  const { username, secret } = router.query;
+  console.log(username, secret);
+
   useEffect(() => {
-    if (router.query.username) {
-      setUsername(router.query.username);
-    }
-    if (router.query.secret) {
-      setSecret(router.query.secret);
-    }
-  }, [router.query.username, router.query.secret]);
-  useEffect(() => {
-    if (username.length === 1 || secret.length === 1) return;
-    axios
-      .put(
-        "https://api.chatengine.io/users/",
-        { username, secret },
-        { headers: { "Private-Key": "926cdaf3-68a6-4d34-98ea-38d1c2121004" } }
-      )
-      .then((r) => {
-        router.push("/chats");
-      });
-  }, [username, secret]);
+    setLoading(true);
+    setTimeout(() => {
+      if (typeof document !== undefined) {
+        setShowChat(true);
+      }
+      setLoading(false);
+    }, 2000);
+  }, []);
 
-  function onSubmit(e) {
-    e.preventDefault();
-
-    if (username.length === 1 || secret.length === 1) return;
-
-    axios
-      .put(
-        "https://api.chatengine.io/users/",
-        { username, secret },
-        { headers: { "Private-Key": "926cdaf3-68a6-4d34-98ea-38d1c2121004" } }
-      )
-
-      .then((r) => {
-        router.push("/chats");
-      });
-  }
+  if (!showChat) return <div />;
 
   return (
     <div className="background">
-      <div className="auth-container">
-        <form className="auth-form" onSubmit={(e) => onSubmit(e)}>
-          <div className="auth-title">PickUp Chat</div>
-
-          <div className="input-container">
-            <input
-              placeholder="Email"
-              className="text-input"
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
-
-          <div className="input-container">
-            <input
-              type="password"
-              placeholder="Password"
-              className="text-input"
-              onChange={(e) => setSecret(e.target.value)}
-            />
-          </div>
-
-          <button type="submit" className="submit-button">
-            Login / Sign Up
-          </button>
-        </form>
+      <div className="shadow">
+        <ChatEngine
+          height="calc(100vh - 212px)"
+          projectID="98554d93-5bcc-4c28-8594-ba95b6672043"
+          userName={username}
+          userSecret={secret}
+          renderNewMessageForm={() => <MessageFormSocial />}
+        />
       </div>
     </div>
   );
 };
-
-export default Auth;
+export default Home;
