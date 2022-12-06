@@ -8,12 +8,14 @@ const Auth = () => {
 
   const router = useRouter();
   useEffect(() => {
-    if (router.query.username) {
-      setUsername(router.query.username);
+    if (
+      router.query.username === undefined ||
+      router.query.secret === undefined
+    ) {
+      window.location.href = "https://pickup-davi-web.vercel.app/";
     }
-    if (router.query.secret) {
-      setSecret(router.query.secret);
-    }
+    setUsername(router.query.username);
+    setSecret(router.query.secret);
   }, [router.query.username, router.query.secret]);
   useEffect(() => {
     if (username.length === 1 || secret.length === 1) return;
